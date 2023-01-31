@@ -1,5 +1,25 @@
 # Building A Lottery Contract Using Oracle Randomness
 
+## Table of contents
+- [Building A Lottery Contract Using Oracle Randomness](#building-a-lottery-contract-using-oracle-randomness)
+  * [Introduction](#introduction)
+  * [Prerequisites](#prerequisites)
+  * [Requirements](#requirements)
+  * [Let's Get started!](#let-s-get-started-)
+    + [What we are going to build](#what-we-are-going-to-build)
+    + [What you will learn at the end of this tutorial](#what-you-will-learn-at-the-end-of-this-tutorial)
+    + [Requirement of Randomness](#requirement-of-randomness)
+    + [Problem with On-Chain Randomness](#problem-with-on-chain-randomness)
+    + [Oracles and Random Number generation](#oracles-and-random-number-generation)
+  * [Witnet Oracle](#witnet-oracle)
+    + [Using Randomness from witnet](#using-randomness-from-witnet)
+  * [Setup](#setup)
+  * [Building the contract](#building-the-contract)
+  * [Testing the contract](#testing-the-contract)
+  * [Conclusion](#conclusion)
+  * [What's next](#what-s-next)
+  * [References](#references)
+
 ## Introduction
 - Randomness is a core functionality for many applications
 - Games, trait-based NFTs, and luck-based financial applications rely heavily on randomness
