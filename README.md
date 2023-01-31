@@ -3,7 +3,7 @@
 - Games, trait-based NFTs, and luck-based financial applications rely heavily on randomness
 - In this tutorial, we are going to learn about random number generation using the Witnet oracle and how to work with it
 ---
-# Pre requisites
+# Prerequisites
 - To understand and utilize this tutorial you need to have the understanding of:
     - Basic knowledge of developing smart contracts in [Solidity](https://docs.soliditylang.org). 
     - Basic experience with [Remix IDE](https://remix.ethereum.org)
@@ -32,7 +32,7 @@ By the end of this tutorial, you will have a good understanding of:
 
 ## Requirement of Randomness
 - Most applications require randomness in some sort
-- Let's take for example a gambling contract(like our own), these contracts award people based on luck, and luck is random
+- Let's take for example a gambling contract (like our own), these contracts award people based on luck, and luck is random
 - For these luck-based applications to work, the randomness must be tamper-proof so that they cannot be exploited
 
 ## Problem with On-Chain Randomness
