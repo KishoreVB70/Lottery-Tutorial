@@ -269,7 +269,7 @@ contract Lottery {
 - We also set the `latestRandomizingBlock` to 0 to prevent calling this function again
 - Before fetching the random number, we are going to specify the range of the random number
 - For our purpose, we have an array of addresses, and we need to select one person from that array
-- So we specify the range to the length of the array
+- So we specify the range to the length of the array(we would get a random number from 0 to range - 1)
 - Then we call the random function as per the syntax provided by Witnet
 - This will return us the random number which will be the index of the winner
 - As the contract holds all the entry Amounts collected in the lottery, we are going to send the entire balance of the contract to the winner
