@@ -21,6 +21,8 @@ contract Lottery {
 
     bool public open;
 
+    mapping(uint => mapping(address => bool)) private entered;
+
     constructor () {
         owner = msg.sender;
     } 
@@ -61,11 +63,10 @@ contract Lottery {
         require(msg.value == entryAmount, "Insufficient Funds");
 
         //Check if user is already a player
-        for(uint i=0; i < players.length; i++){
-            if (msg.sender == players[i]){
-                revert reEntry();
-            }
+        if(entered[lotteryId][msg.sender]){
+            revert reEntry();
         }
+        entered[lotteryId][msg.sender] = true;
         players.push(msg.sender);
     }
     
