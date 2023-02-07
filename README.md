@@ -145,6 +145,8 @@ contract Lottery {
     address owner;
 
     bool open;
+
+    mapping(uint => mapping(address => bool)) private entered;
 ```
 - Let's look at all the variables we will be going through
 - Firstly we have the `entryAmount` so that the players can know the amount
