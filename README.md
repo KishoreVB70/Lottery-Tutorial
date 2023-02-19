@@ -5,13 +5,13 @@
 ---
 # Pre requisites
 - To understand and utilize this tutorial you need to have the understanding of:
-    - Basic knowledge of developing smart contracts in Solidity
-    - Basic experience with Remix IDE 
-    - Working with Celo Alfajores testnet
+    - Basic knowledge of developing smart contracts in [Solidity](https://soliditylang.org/)
+    - Basic experience with [Remix IDE](https://remix.ethereum.org/)
+    - Working with [Celo Alfajores testnet](https://docs.celo.org/network/alfajores)
 ---
 # Requirements
-- Metamask
-- Celo Alfajores testnet
+- [Metamask](https://metamask.io/)
+- [Celo Alfajores testnet](https://docs.celo.org/network/alfajores)
 ---
 # Let's Get started!
 ## What we are going to build
