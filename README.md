@@ -60,7 +60,7 @@
 - Before starting to code our lottery contract, let's understand the randomness functions provided by Witnet
 - You can find their code and the explanation here - https://docs.witnet.io/smart-contracts/witnet-randomness-oracle/code-examples
 
-```
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
@@ -117,7 +117,7 @@ contract Witnet {
     - Fetch Random Number
 - Now as we have a rough idea about the functions, let's start the coding process
 ---
-```
+```solidity
 // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.0;
@@ -132,7 +132,7 @@ contract Lottery {
 - We import the interface for the randomness contract
 - We set the address of the randomness contract in Celo alfajores and create the instance of the interface.
 ---
-```
+```solidity
     uint256 entryAmount;
     uint256 lastWinnerAmount;
     uint256 public lotteryId;
@@ -154,7 +154,7 @@ contract Lottery {
     - And finally an array of to track all the participants of the lottery
 - Finally, we have a bool which shows if there is a current active lottery
 ---
-```
+```solidity
     constructor () {
         owner = msg.sender;
     } 
@@ -182,7 +182,7 @@ contract Lottery {
     - `Ended` event logs the ID, the address of the winner, and the winner's amount
 - We have also defined the custom error `reEntry` for users who try to enter the lottery more than one time
 ---
-```
+```solidity
     function start(uint32 _entryAmount) external onlyOwner{
         //Check if there is a current active lottery
         require(!open, "running");
@@ -205,7 +205,7 @@ contract Lottery {
     - Then we update the `lotteryId`
 - We also emit the `Started` event with the Id and the amount
 ---
-```
+```solidity
     function join() external payable onlyIfOpen{
         require(msg.value == entryAmount, "Insufficient Funds");
 
@@ -225,7 +225,7 @@ contract Lottery {
 - If the caller is already in the array, then the function call is reverted by the custom error
 - If not, the player is added to the array
 ---
-```
+```solidity
     function requestRandomness() external onlyOwner onlyIfOpen{
         latestRandomizingBlock = block.number;
 
@@ -240,7 +240,7 @@ contract Lottery {
 - This is not a problem as only the fee value will be deducted from the 1 Celo
 - Finally, we call the randomize function in the randomness contract
 ---
-```
+```solidity
     function pickWinner() external onlyOwner onlyIfOpen{
         assert(latestRandomizingBlock > 0);
 
