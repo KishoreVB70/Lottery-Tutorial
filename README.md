@@ -90,8 +90,8 @@ The functionality is divided into two steps to be secure
 To make this tutorial as simple as possible, we are going to use only remix to write and test the contract. You can also use local development by using your favorite code editor
 You can download the package for the interface of the randomness contract through this command:
     `npm I witnet-solidity-bridge`
-- For the rest of us, we are going to use remix IDE
-- Open up remix IDE and create a new file -> Lottery.sol
+
+For the rest of us, we are going to use remix IDE. Open up remix IDE and create a new file -> Lottery.sol
 ## Building the contract
 - If you're curious, the entire code for the contract can be viewed by [CLICKING HERE!](https://github.com/KishoreVB70/Lottery-Tutorial/blob/main/Lottery.sol)
 Before starting to code a project, we must have an outline of all the functionality that will be in the contract
@@ -162,15 +162,18 @@ Let's look at all the variables we will be going through:
     event Ended(uint lotteryId, uint winningAmount, address winner);
     error reEntry();
 ```
-We have a simple constructor where we set the creator of the contract as the owner
+We have a simple constructor where we set the creator of the contract as the owner.
+
 We have specified two modifiers to control access
-    1. Firstly we have the `onlyOwner` modifier which allows only the owner to perform certain functionality
-    2. Then we have the `onlyIfOpen` modifier which allows access to certain functions only if there is a current active lottery
+1. The `onlyOwner` modifier which allows only the owner to perform certain functionality
+2. The `onlyIfOpen` modifier which allows access to certain functions only if there is a current active lottery
+
 Then we have two events to log the information about the lottery
-    - `Started` event logs the ID of the event and the amount
-    - `Ended` event logs the ID, the address of the winner, and the winner's amount
-- We have also defined the custom error `reEntry` for users who try to enter the lottery more than one time
----
+1. `Started` event logs the ID of the event and the amount
+2. `Ended` event logs the ID, the address of the winner, and the winner's amount
+
+We have also defined the custom error `reEntry` for users who try to enter the lottery more than one time
+
 ```solidity
     function start(uint32 _entryAmount) external onlyOwner{
         //Check if there is a current active lottery
