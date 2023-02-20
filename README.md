@@ -252,27 +252,19 @@ Then we update the state variables
 
     receive () external payable {}
 ```
-- Finally, we have the `pickWinner` function which is going to end the lottery
-- This function includes the fetching of the random number that has been generated
-- This function must be called only after 5 - 10 minutes after the `requestRandomness` function to allow it to generate the random number
-- Calling this function before that will result in reversion
+- Finally, we have the `pickWinner` function which is going to end the lottery. This function includes the fetching of the random number that has been generated. This function must be called only after 5 - 10 minutes after the `requestRandomness` function to allow it to generate the random number. Calling this function before that will result in reversion
 - First, our function checks if the `requestRandomness` function has been called by checking the `latestRandomizingBlock` variable
 - Then we close the lottery by setting `open` to false
 - We also set the `latestRandomizingBlock` to 0 to prevent calling this function again
-- Before fetching the random number, we are going to specify the range of the random number
-- For our purpose, we have an array of addresses, and we need to select one person from that array
-- So we specify the range to the length of the array(we would get a random number from 0 to range - 1)
-- Then we call the random function as per the syntax provided by Witnet
-- This will return us the random number which will be the index of the winner
-- As the contract holds all the entry Amounts collected in the lottery, we are going to send the entire balance of the contract to the winner
+- Before fetching the random number, we are going to specify the range of the random number. For our purpose, we have an array of addresses, and we need to select one person from that array. So we specify the range to the length of the array(we would get a random number from 0 to range - 1)
+- Then we call the random function as per the syntax provided by Witnet. This will return us the random number which will be the index of the winner. As the contract holds all the entry Amounts collected in the lottery, we are going to send the entire balance of the contract to the winner
 - We update the global variables of the last winner's address and the winner's amount
 - We use `call` to transfer the fund
 - Finally, we emit the `Ended` event to log the information of the lottery Id, winner amount, and the winner's address
-- As our contract is handling funds, we implement a receive function
+- As our contract is handling funds, we implement a receive function at the end
 ---
 ## Testing the contract
-- Finally, we are done coding the contract
-- You can find the entire code of the contract by [CLICKING HERE!](https://github.com/KishoreVB70/Lottery-Tutorial/blob/main/Lottery.sol)
+- Finally, we are done coding the contract. You can find the entire code of the contract by [CLICKING HERE!](https://github.com/KishoreVB70/Lottery-Tutorial/blob/main/Lottery.sol)
 - Now we are going to use remix IDE and metamask to deploy the contract to the Celo alfajores network
 - I have made a simple video to show you guys the functionality
 [![Testing Video](https://i.postimg.cc/ZYFzPrvF/tutorial-yt.jpg)](https://www.youtube.com/watch?v=DPsizPEkZZk "Testing Video")
