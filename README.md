@@ -104,8 +104,8 @@ So the major functionality would be:
 - End lottery(picking and awarding the winner) -> Only Owner
 
 In our case, we are going to incorporate the two-step random number generation from Witnet
-- Generate a Random number
-- Fetch Random Number
+1. Generate a Random number
+2. Fetch Random Number
 Now as we have a rough idea about the functions, let's start the coding process
 
 ```solidity
@@ -137,7 +137,7 @@ Let's look at all the variables we will be going through:
 - Firstly, we have the `entryAmount` so that the players can know the amount
 - To give more information to the players, we have the `lastWinnerAmount` and the `lotteryId`
 - We have the `latestRandomizingBlock` which is the block where we called the randomness function
-Coming to the address, we have:
+- Coming to the address, we have:
     - Address of the owner of the contract
     - Address of the last winner(for information)
     - And finally the array `players` to track all the participants of the lottery
