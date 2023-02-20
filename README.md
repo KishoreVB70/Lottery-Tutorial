@@ -196,7 +196,7 @@ Then we update the state variables
     - Then we clear the array of players that is left from the previous round
     - Then we update the `lotteryId`
 - We also emit the `Started` event with the Id and the amount
----
+
 ```solidity
     function join() external payable onlyIfOpen{
         require(msg.value == entryAmount, "Insufficient Funds");
@@ -213,10 +213,8 @@ Then we update the state variables
 - Then we have the join function which is payable and can only be accessed if there is an active lottery(`onlyIfOpen`)
 - First, we have a require statement to check if the user has sent the right amount
 - Then we perform a check to see if the user is already entered in the lottery
-- We have employed a simple for loop which iterated over the `players` array and checks if the caller is already a part of it
-- If the caller is already in the array, then the function call is reverted by the custom error
-- If not, the player is added to the array
----
+- We have employed a simple for loop which iterated over the `players` array and checks if the caller is already a part of it. If the caller is already in the array, then the function call is reverted by the custom error. If not, the player is added to the array
+
 ```solidity
     function requestRandomness() external onlyOwner onlyIfOpen{
         latestRandomizingBlock = block.number;
@@ -225,11 +223,9 @@ Then we update the state variables
         witnet.randomize{ value: feeValue }();
     }
 ```
-- Next is the `requestRandomess` function which is a slightly modified version of the one from Witnet
-- Instead of sending the funds from the caller,  we are going to use the funds already present in the contract to call the randomize function
+- Next is the `requestRandomess` function which is a slightly modified version of the one from Witnet. Instead of sending the funds from the caller,  we are going to use the funds already present in the contract to call the randomize function
 - First, we set the block number
-- Then we have a fee value which is set to 1 Celo(normal fee is very less than 1 Celo)
-- This is not a problem as only the fee value will be deducted from the 1 Celo
+- Then we have a fee value which is set to 1 Celo(normal fee is very less than 1 Celo). This is not a problem as only the fee value will be deducted from the 1 Celo
 - Finally, we call the randomize function in the randomness contract
 ---
 ```solidity
