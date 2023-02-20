@@ -98,13 +98,14 @@ Before starting to code a project, we must have an outline of all the functional
 - This contract will behave like a traditional lottery where there is an owner who will start and end the lottery
 - There will be people who will join the lottery by paying the lottery amount
 
-So the major functionality would be
-    - Start lottery -> Only Owner
-    - Join the lottery
-    - End lottery(picking and awarding the winner) -> Only Owner
+So the major functionality would be:
+- Start lottery -> Only Owner
+- Join the lottery
+- End lottery(picking and awarding the winner) -> Only Owner
+
 In our case, we are going to incorporate the two-step random number generation from Witnet
-    - Generate a Random number
-    - Fetch Random Number
+- Generate a Random number
+- Fetch Random Number
 Now as we have a rough idea about the functions, let's start the coding process
 
 ```solidity
