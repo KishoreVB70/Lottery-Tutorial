@@ -82,24 +82,21 @@ contract Witnet {
 }
 }
 ```
-- Firstly we import the interface of the witnessRandomness contract
-- The functionality is divided into two steps to be secure
-- There is a request function and a fetch function
-- First, we request a random number by paying a small fee
-- it takes in the current block number and begins the process to generate a random number
-- It takes around 5 to 10 minutes to generate the random number
-- After 5 - 10 minutes, we can call the fetch function to obtain the random number
-- This number is generated earlier and it is fetched into the contract whenever you call the fetch function
+Firstly we import the interface of the witnessRandomness contract.
+The functionality is divided into two steps to be secure
+    1. request function
+    2. fetch function
+- First, we request a random number by paying a small fee. It takes in the current block number and begins the process to generate a random number. It takes around 5 to 10 minutes to generate the random number
+- After 5 - 10 minutes, we can call the fetch function to obtain the random number. This number is generated earlier and it is fetched into the contract whenever you call the fetch function
 ## Setup
-- To make this tutorial as simple as possible, we are going to use only remix to write and test the contract
-- You can also use local development by using your favorite code editor
-- You can download the package for the interface of the randomness contract through this command:
-    npm I witnet-solidity-bridge
+To make this tutorial as simple as possible, we are going to use only remix to write and test the contract. You can also use local development by using your favorite code editor
+You can download the package for the interface of the randomness contract through this command:
+    `npm I witnet-solidity-bridge`
 - For the rest of us, we are going to use remix IDE
 - Open up remix IDE and create a new file -> Lottery.sol
 ## Building the contract
 - If you're curious, the entire code for the contract can be viewed by [CLICKING HERE!](https://github.com/KishoreVB70/Lottery-Tutorial/blob/main/Lottery.sol)
-- Before starting to code a project, we must have an outline of all the functionality that will be in the contract
+Before starting to code a project, we must have an outline of all the functionality that will be in the contract
 - This contract will behave like a traditional lottery where there is an owner who will start and end the lottery
 - There will be people who will join the lottery by paying the lottery amount
 So the major functionality would be
@@ -109,8 +106,8 @@ So the major functionality would be
 In our case, we are going to incorporate the two-step random number generation from Witnet
     - Generate a Random number
     - Fetch Random Number
-- Now as we have a rough idea about the functions, let's start the coding process
----
+Now as we have a rough idea about the functions, let's start the coding process
+
 ```solidity
 // SPDX-License-Identifier: MIT
 
@@ -122,32 +119,30 @@ contract Lottery {
     address witnetAddress = 0xbD804467270bCD832b4948242453CA66972860F5;
     IWitnetRandomness public witnet = IWitnetRandomness(witnetAddress);
 ```
-- As usual, we write the license and the pragma solidity version
-- We import the interface for the randomness contract
-- We set the address of the randomness contract in Celo alfajores and create the instance of the interface.
----
+As usual, we write the license and the pragma solidity version. We import the interface for the randomness contract. We set the address of the randomness contract in Celo alfajores and create the instance of the interface.
+
 ```solidity
     uint256 entryAmount;
     uint256 lastWinnerAmount;
     uint256 public lotteryId;
     uint256 public latestRandomizingBlock;
 
+    address owner;
     address payable lastWinner;
     address[] players;
-    address owner;
 
     bool open;
 ```
-- Let's look at all the variables we will be going through
-- Firstly we have the `entryAmount` so that the players can know the amount
-- To give more information we have the last winner amount and the lottery Id
+Let's look at all the variables we will be going through:
+- Firstly, we have the `entryAmount` so that the players can know the amount
+- To give more information to the players, we have the `lastWinnerAmount` and the `lotteryId`
 - We have the `latestRandomizingBlock` which is the block where we called the randomness function
 Coming to the address, we have:
     - Address of the owner of the contract
     - Address of the last winner(for information)
-    - And finally an array of to track all the participants of the lottery
+    - And finally the array `players` to track all the participants of the lottery
 - Finally, we have a bool which shows if there is a current active lottery
----
+
 ```solidity
     constructor () {
         owner = msg.sender;
@@ -167,7 +162,7 @@ Coming to the address, we have:
     event Ended(uint lotteryId, uint winningAmount, address winner);
     error reEntry();
 ```
-- We have a simple constructor where we set the creator of the contract as the owner
+We have a simple constructor where we set the creator of the contract as the owner
 We have specified two modifiers to control access
     1. Firstly we have the `onlyOwner` modifier which allows only the owner to perform certain functionality
     2. Then we have the `onlyIfOpen` modifier which allows access to certain functions only if there is a current active lottery
